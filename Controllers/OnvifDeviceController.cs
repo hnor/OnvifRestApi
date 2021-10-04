@@ -22,11 +22,7 @@ namespace SgiOnvifRestApiGW.Controllers
         }
         [SwaggerOperation(Summary = "دریافت مشخصات زمانی دستگاه")]
         [HttpGet("GetSystemDateAndTime")]
-        public OnvifObjects.GetSystemDateAndTimeResponse.GetSystemDateAndTimeResponse GetSystemDateAndTime(string CameraIp, string UserName, string Password, int _RtspPort = 554, int _Timout = 45)
-        {
-            return get_GetSystemDateAndTime(CameraIp, UserName, Password, _RtspPort, _Timout);
-        }
-        private static OnvifObjects.GetSystemDateAndTimeResponse.GetSystemDateAndTimeResponse get_GetSystemDateAndTime(string CameraIp, string UserName, string Password, int _RtspPort = 554, int _Timout = 45)
+        public OnvifObjects.GetSystemDateAndTimeResponse.GetSystemDateAndTimeResponse GetSystemDateAndTime(string CameraIp, string UserName, string Password)
         {
             SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
             return sod1.GetDeviceDateTime(CameraIp, UserName, Password);
@@ -35,15 +31,27 @@ namespace SgiOnvifRestApiGW.Controllers
 
         [SwaggerOperation(Summary = "دریافت لیست قابلیتهای دستگاه")]
         [HttpGet("GetCapabilities")]
-        public OnvifObjects.GetCapabilitiesResponse.GetCapabilitiesResponse GetCapabilities(string CameraIp, string UserName, string Password, int _RtspPort = 554, int _Timout = 45)
-        {
-            return get_GetCapabilities(CameraIp, UserName, Password, _RtspPort, _Timout);
-        }
-        private OnvifObjects.GetCapabilitiesResponse.GetCapabilitiesResponse get_GetCapabilities(string CameraIp, string UserName, string Password, int _RtspPort = 554, int _Timout = 45)
+        public OnvifObjects.GetCapabilitiesResponse.GetCapabilitiesResponse GetCapabilities(string CameraIp, string UserName, string Password)
         {
             SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
             return sod1.GetCapabilities(CameraIp, UserName, Password);
         }
+
+
+        [SwaggerOperation(Summary = "دریافت مشخصات اینترفیس شبکه دستگاه")]
+        [HttpGet("GetNetworkInterfaces")]
+        public OnvifObjects.OnvifGetNetworkInterfacesResponse.GetNetworkInterfacesResponse GetNetworkInterfaces(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetNetworkInterfaces(CameraIp, UserName, Password);
+        }
+
+
+
+
+
+
+
 
 
         [HttpGet("GetScopes")]
