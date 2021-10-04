@@ -27,7 +27,7 @@ namespace SgiOnvifRestApiGW.Controllers
             SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
             sop1.AbsoluteMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY, Zoom);
         }
-        [SwaggerOperation(Summary = "حرکت دوربین به صورت مطلق")]
+        [SwaggerOperation(Summary = "حرکت دوربین به صورت نسبی")]
         [HttpPut("RelativeMove")]
         public void RelativeMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY)
         {
