@@ -254,7 +254,67 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             }
             return cr;
         }
+        
+        public OnvifObjects.GetSystemLogResponse.GetSystemLogResponse GetSystemLog(string CameraIP, string Username, string Password,string LogType)
+        {
+            string getsl_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetSystemLog xmlns=\"http://www.onvif.org/ver10/device/wsdl\">" +
+                                        "<LogType>" + LogType + "</LogType>" +
+                                    "</GetSystemLog>" +
+                                "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getsl_xml, Username, Password, "GetSystemLog");
+            
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetSystemLogResponse.GetSystemLogResponse));
+            rnod.Normalize();
+            OnvifObjects.GetSystemLogResponse.GetSystemLogResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetSystemLogResponse.GetSystemLogResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
 
+
+
+        public void SetScopes(string CameraIP, string Username, string Password,string DeviceName,string LocationName)
+        {
+            string setScope_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<SetScopes xmlns=\"http://www.onvif.org/ver10/device/wsdl\">" +
+                                        "<Scopes>odm:name:" + DeviceName + "</Scopes>" +
+                                        "<Scopes>odm:location:" + LocationName + "</Scopes>" +
+                                    "</SetScopes></s:Body>";
+            NetFuncs.PostXmlRequest(CameraIP, setScope_xml, Username, Password, "SetScopes");
+        }
+
+        public void SetNetworkInterfaces(string CameraIP, string Username, string Password,OnvifObjects.Inputs.OnvifSetNetworkInterfacesInputs NewInterfaceConfig)
+        {
+            string setSintf_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<SetNetworkInterfaces xmlns=\"http://www.onvif.org/ver10/device/wsdl\">" +
+                                        "<InterfaceToken>" + NewInterfaceConfig.InterfaceName + "</InterfaceToken>" +
+                                        "<NetworkInterface>" +
+                                            "<Enabled xmlns=\"http://www.onvif.org/ver10/schema\">" + NewInterfaceConfig.Enabled + "</Enabled>" +
+                                            "<MTU xmlns=\"http://www.onvif.org/ver10/schema\">" + NewInterfaceConfig.MTU + "</MTU>" +
+                                            "<IPv4 xmlns=\"http://www.onvif.org/ver10/schema\">" +
+                                                "<Enabled>" + NewInterfaceConfig.IPV4Enabled + "</Enabled>" +
+                                                "<Manual>" + (NewInterfaceConfig.IPV4Manual ?
+                                                            "<Address>" + NewInterfaceConfig.IPV4ManualAddress + "</Address>" +
+                                                            "<PrefixLength>" + NewInterfaceConfig.IPV4PrefixLength + "</PrefixLength>" :
+                                                            "false") +
+                                                "</Manual>" +
+                                                "<DHCP>" + NewInterfaceConfig.IPV4DHCP + "</DHCP>" +
+                                            "</IPv4>" +
+                                        "</NetworkInterface>" +
+                                    "</SetNetworkInterfaces>" +
+                                 "</s:Body>";
+            NetFuncs.PostXmlRequest(CameraIP, setSintf_xml, Username, Password, "SetNetworkInterfaces");
+        }
 
     }
 }

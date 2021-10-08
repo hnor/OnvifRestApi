@@ -101,7 +101,7 @@ namespace SgiOnvifRestApiGW.Controllers
         }
 
 
-        [SwaggerOperation(Summary = "دریافت اطلاعات دیسکاوری دستگاه")]
+        [SwaggerOperation(Summary = "دریافت وضعیت دیسکاوری دستگاه")]
         [HttpGet("GetDiscoveryMode")]
         public OnvifObjects.GetDiscoveryModeResponse.GetDiscoveryModeResponse GetDiscoveryMode(string CameraIp, string UserName, string Password)
         {
@@ -109,23 +109,40 @@ namespace SgiOnvifRestApiGW.Controllers
             return sod1.GetDiscoveryMode(CameraIp, UserName, Password);
         }
 
-
-
-
-
-
-
-
-
+        [SwaggerOperation(Summary = "دریافت اطلاعات دیسکاوری دستگاه")]
         [HttpGet("GetScopes")]
-        public OnvifObjects.GetScopesResponse.GetScopesResponse GetScopes(string CameraIp, string UserName, string Password, int _RtspPort = 554, int _Timout = 45)
-        {
-            return GetScopes(CameraIp, UserName, Password, _RtspPort, _Timout);
-        }
-        private OnvifObjects.GetScopesResponse.GetScopesResponse get_GetScopes(string CameraIp, string UserName, string Password, int _RtspPort = 554, int _Timout = 45)
+        public OnvifObjects.GetScopesResponse.GetScopesResponse GetScopes(string CameraIp, string UserName, string Password)
         {
             SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
             return sod1.GetScopes(CameraIp, UserName, Password);
         }
+
+        [SwaggerOperation(Summary = "دریافت اطلاعات تراکنشهای دستگاه")]
+        [HttpGet("GetSystemLog")]
+        public OnvifObjects.GetSystemLogResponse.GetSystemLogResponse GetSystemLog(string CameraIp, string UserName, string Password,string LogType= "System")
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetSystemLog(CameraIp, UserName, Password, LogType);
+        }
+
+
+
+
+        [SwaggerOperation(Summary = "تنظیم اطلاعات دیسکاوری دستگاه")]
+        [HttpPut("SetScopes")]
+        public void SetScopes(string CameraIp, string UserName, string Password,string DeviceName, string LocationName)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            sod1.SetScopes(CameraIp, UserName, Password, DeviceName, LocationName);
+        }
+
+        [SwaggerOperation(Summary = "تنظیمات ایتنرفیس شبکه")]
+        [HttpPut("SetNetworkInterfaces")]
+        public void SetNetworkInterfaces(string CameraIp, string UserName, string Password,OnvifObjects.Inputs.OnvifSetNetworkInterfacesInputs NewConfig)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            sod1.SetNetworkInterfaces(CameraIp, UserName, Password, NewConfig);
+        }
+
     }
 }
