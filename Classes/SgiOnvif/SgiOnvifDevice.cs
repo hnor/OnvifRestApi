@@ -159,6 +159,30 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             return cr;
         }
 
+        public OnvifObjects.GetNetworkDefaultGatewayResponse.GetNetworkDefaultGatewayResponse GetNetworkDefaultGateway(string CameraIP, string Username, string Password)
+        {
+            string getzer_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetNetworkDefaultGateway xmlns=\"http://www.onvif.org/ver10/device/wsdl\"/>" +
+                                "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getzer_xml, Username, Password, "GetNetworkDefaultGateway");
+            
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetNetworkDefaultGatewayResponse.GetNetworkDefaultGatewayResponse));
+            rnod.Normalize();
+            OnvifObjects.GetNetworkDefaultGatewayResponse.GetNetworkDefaultGatewayResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetNetworkDefaultGatewayResponse.GetNetworkDefaultGatewayResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
 
     }
 }

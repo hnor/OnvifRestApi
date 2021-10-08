@@ -74,6 +74,15 @@ namespace SgiOnvifRestApiGW.Controllers
         }
 
 
+        [SwaggerOperation(Summary = "دریافت اطلاعات گیت وی")]
+        [HttpGet("GetNetworkDefaultGateway")]
+        public OnvifObjects.GetNetworkDefaultGatewayResponse.GetNetworkDefaultGatewayResponse GetNetworkDefaultGateway(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetNetworkDefaultGateway(CameraIp, UserName, Password);
+        }
+
+
 
 
 
