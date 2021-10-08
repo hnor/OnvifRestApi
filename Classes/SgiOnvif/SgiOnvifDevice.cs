@@ -281,6 +281,54 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             return cr;
         }
 
+        public OnvifObjects.GetRelayOutputsResponse.GetRelayOutputsResponse GetRelayOutputs(string CameraIP, string Username, string Password) 
+        {
+            string getru_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                "<GetRelayOutputs xmlns=\"http://www.onvif.org/ver10/device/wsdl\"/>" +
+                               "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getru_xml, Username, Password, "GetRelayOutputs");
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetRelayOutputsResponse.GetRelayOutputsResponse));
+            rnod.Normalize();
+            OnvifObjects.GetRelayOutputsResponse.GetRelayOutputsResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetRelayOutputsResponse.GetRelayOutputsResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
+        public OnvifObjects.GetUsersResponse.GetUsersResponse GetUsers(string CameraIP, string Username, string Password) 
+        {
+            string getusr_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetUsers xmlns=\"http://www.onvif.org/ver10/device/wsdl\"/>" +
+                                "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getusr_xml, Username, Password, "GetUsers");
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetUsersResponse.GetUsersResponse));
+            rnod.Normalize();
+            OnvifObjects.GetUsersResponse.GetUsersResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetUsersResponse.GetUsersResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
+
+
 
 
         public void SetScopes(string CameraIP, string Username, string Password,string DeviceName,string LocationName)

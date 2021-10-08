@@ -125,6 +125,22 @@ namespace SgiOnvifRestApiGW.Controllers
             return sod1.GetSystemLog(CameraIp, UserName, Password, LogType);
         }
 
+        [SwaggerOperation(Summary = "دریافت اطلاعات رله های خروجی دستگاه وتنظیمات آنها")]
+        [HttpGet("GetRelayOutputs")]
+        public OnvifObjects.GetRelayOutputsResponse.GetRelayOutputsResponse GetRelayOutputs(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetRelayOutputs(CameraIp, UserName, Password);
+        }
+
+        [SwaggerOperation(Summary = "دریافت لیست کاربران دستگاه")]
+        [HttpGet("GetUsers")]
+        public OnvifObjects.GetUsersResponse.GetUsersResponse GetUsers(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetUsers(CameraIp, UserName, Password);
+        }
+
 
 
 
