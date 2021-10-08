@@ -83,6 +83,33 @@ namespace SgiOnvifRestApiGW.Controllers
         }
 
 
+        [SwaggerOperation(Summary = "دریافت اطلاعات سرور نام دستگاه")]
+        [HttpGet("GetDNS")]
+        public OnvifObjects.GetDNSResponse.GetDNSResponse GetDNS(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetDNS(CameraIp, UserName, Password);
+        }
+
+
+        [SwaggerOperation(Summary = "دریافت اطلاعات پروتکل های شبکه دستگاه")]
+        [HttpGet("GetNetworkProtocols")]
+        public OnvifObjects.GetNetworkProtocolsResponse.GetNetworkProtocolsResponse GetNetworkProtocols(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetNetworkProtocols(CameraIp, UserName, Password);
+        }
+
+
+        [SwaggerOperation(Summary = "دریافت اطلاعات دیسکاوری دستگاه")]
+        [HttpGet("GetDiscoveryMode")]
+        public OnvifObjects.GetDiscoveryModeResponse.GetDiscoveryModeResponse GetDiscoveryMode(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetDiscoveryMode(CameraIp, UserName, Password);
+        }
+
+
 
 
 

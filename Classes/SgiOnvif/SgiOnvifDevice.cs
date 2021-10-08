@@ -159,12 +159,84 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             return cr;
         }
 
+        public OnvifObjects.GetDNSResponse.GetDNSResponse GetDNS(string CameraIP, string Username, string Password)
+        {
+            string getdns_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetDNS xmlns=\"http://www.onvif.org/ver10/device/wsdl\"/>" +
+                                "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getdns_xml, Username, Password, "GetDNS");
+            
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetDNSResponse.GetDNSResponse));
+            rnod.Normalize();
+            OnvifObjects.GetDNSResponse.GetDNSResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetDNSResponse.GetDNSResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
+        public OnvifObjects.GetNetworkProtocolsResponse.GetNetworkProtocolsResponse GetNetworkProtocols(string CameraIP, string Username, string Password)
+        {
+            string getnp_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetNetworkProtocols xmlns=\"http://www.onvif.org/ver10/device/wsdl\"/>" +
+                               "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getnp_xml, Username, Password, "GetNetworkProtocols");
+            
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetNetworkProtocolsResponse.GetNetworkProtocolsResponse));
+            rnod.Normalize();
+            OnvifObjects.GetNetworkProtocolsResponse.GetNetworkProtocolsResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetNetworkProtocolsResponse.GetNetworkProtocolsResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
+        public OnvifObjects.GetDiscoveryModeResponse.GetDiscoveryModeResponse GetDiscoveryMode(string CameraIP, string Username, string Password)
+        {
+            string getdm_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetDiscoveryMode xmlns=\"http://www.onvif.org/ver10/device/wsdl\"/>" +
+                               "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getdm_xml, Username, Password, "GetDiscoveryMode");
+            
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetDiscoveryModeResponse.GetDiscoveryModeResponse));
+            rnod.Normalize();
+            OnvifObjects.GetDiscoveryModeResponse.GetDiscoveryModeResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetDiscoveryModeResponse.GetDiscoveryModeResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
         public OnvifObjects.GetNetworkDefaultGatewayResponse.GetNetworkDefaultGatewayResponse GetNetworkDefaultGateway(string CameraIP, string Username, string Password)
         {
-            string getzer_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+            string getgw_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
                                     "<GetNetworkDefaultGateway xmlns=\"http://www.onvif.org/ver10/device/wsdl\"/>" +
                                 "</s:Body>";
-            var res = NetFuncs.PostXmlRequest(CameraIP, getzer_xml, Username, Password, "GetNetworkDefaultGateway");
+            var res = NetFuncs.PostXmlRequest(CameraIP, getgw_xml, Username, Password, "GetNetworkDefaultGateway");
             
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
