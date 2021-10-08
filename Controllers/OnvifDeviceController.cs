@@ -47,6 +47,33 @@ namespace SgiOnvifRestApiGW.Controllers
         }
 
 
+        [SwaggerOperation(Summary = "دستگاه NTP دریافت تنظیمات")]
+        [HttpGet("GetNTP")]
+        public OnvifObjects.OnvifGetNTPResponse.GetNTPResponse GetNTP(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetNTP(CameraIp, UserName, Password);
+        }
+
+
+        [SwaggerOperation(Summary = "دریافت تنظیمات پیکربندی صفر")]
+        [HttpGet("GetZeroConfiguration")]
+        public OnvifObjects.GetZeroConfigurationResponse.GetZeroConfigurationResponse GetZeroConfiguration(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetZeroConfiguration(CameraIp, UserName, Password);
+        }
+
+
+        [SwaggerOperation(Summary = "دریافت نام دستگاه")]
+        [HttpGet("GetHostname")]
+        public OnvifObjects.OnvifGetHostnameResponse.GetHostnameResponse GetHostname(string CameraIp, string UserName, string Password)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetHostname(CameraIp, UserName, Password);
+        }
+
+
 
 
 
