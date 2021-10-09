@@ -96,22 +96,5 @@ namespace SgiOnvifRestApiGW
         }
 
     }
-
-    public static class XmlWorker
-    {
-        public static Type ConvertTo(string InputXml,Type TargetType)
-        {
-            var cr="";
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(InputXml);
-            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetCapabilitiesResponse.GetCapabilitiesResponse));
-            using (StringReader stringReader = new StringReader(rnod.OuterXml))
-            {
-               // cr = (typeof(TargetType))serializer.Deserialize(stringReader);
-            }
-            return typeof(string);// cr;
-        }
-    }
     
 }

@@ -20,6 +20,7 @@ namespace SgiOnvifRestApiGW.Controllers
             _logger = logger;
 
         }
+
         [SwaggerOperation(Summary = "دریافت مشخصات زمانی دستگاه")]
         [HttpGet("GetSystemDateAndTime")]
         public OnvifObjects.GetSystemDateAndTimeResponse.GetSystemDateAndTimeResponse GetSystemDateAndTime(string CameraIp, string UserName, string Password)

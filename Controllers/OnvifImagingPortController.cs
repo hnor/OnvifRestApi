@@ -32,6 +32,16 @@ namespace SgiOnvifRestApiGW.Controllers
             return soip1.GetMoveOptions(CameraIp, UserName, Password, VideoSourceToken);
         }
 
+        [SwaggerOperation(Summary = "")]
+        [HttpGet("GetImagingSettings")]
+        //public string GetImagingSettings(string CameraIp, string UserName, string Password, string VideoSourceToken)
+        public OnvifObjects.GetImagingSettingsResponse.GetImagingSettingsResponse GetImagingSettings(string CameraIp, string UserName, string Password, string VideoSourceToken)
+        {
+            SgiOnvif.SgiOnvifImagingPort soip1 = new SgiOnvif.SgiOnvifImagingPort();
+            return soip1.GetImagingSettings(CameraIp, UserName, Password, VideoSourceToken);
+//          return System.Text.Json.JsonSerializer.Serialize(res);
+        }
+
 
 
     }

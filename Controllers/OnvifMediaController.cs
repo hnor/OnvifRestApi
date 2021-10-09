@@ -33,20 +33,20 @@ namespace SgiOnvifRestApiGW.Controllers
         /// <param name="UserName">camera username</param>
         /// <param name="Password">camera password</param>
         /// <returns>list of profiles as json string</returns>
-        public string GetProfiles(string CameraIp, string UserName, string Password)
+        public OnvifObjects.GetProfilesResponse.GetProfilesResponse GetProfiles(string CameraIp, string UserName, string Password)
         {
             SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
-            var res = som1.GetProfiles(CameraIp,UserName,Password);
-            return JsonSerializer.Serialize(res);
+            return som1.GetProfiles(CameraIp,UserName,Password);
+            //return JsonSerializer.Serialize(res);
         }
 
         [SwaggerOperation(Summary = "دریافت اطلاعات یک پروفایل دستگاه")]
         [HttpGet("GetProfile")]
-        public string GetProfile(string CameraIp, string UserName, string Password,string ProfileToken)
+        public OnvifObjects.GetProfileResponse.GetProfileResponse GetProfile(string CameraIp, string UserName, string Password,string ProfileToken)
         {
             SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
-            var res=som1.GetProfile(CameraIp,UserName,Password,ProfileToken);
-            return JsonSerializer.Serialize(res);
+            return som1.GetProfile(CameraIp,UserName,Password,ProfileToken);
+            //return JsonSerializer.Serialize(res);
         }
 
 
@@ -74,6 +74,15 @@ namespace SgiOnvifRestApiGW.Controllers
         {
             SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
             return som1.GetVideoEncoderConfigurationOptions(CameraIp, UserName, Password, ProfileToken, ConfigurationToken);
+        }
+
+
+        [SwaggerOperation(Summary = "دریافت تنظیمات ")]
+        [HttpGet("GetMetadataConfigurationOptions")]
+        public OnvifObjects.GetMetadataConfigurationOptionsResponse.GetMetadataConfigurationOptionsResponse GetMetadataConfigurationOptions(string CameraIp, string UserName, string Password, string ProfileToken, string ConfigurationToken)
+        {
+            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            return som1.GetMetadataConfigurationOptions(CameraIp, UserName, Password, ProfileToken, ConfigurationToken);
         }
 
 

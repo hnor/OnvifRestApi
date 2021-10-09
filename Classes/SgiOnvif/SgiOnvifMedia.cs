@@ -94,7 +94,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             return cr;
         }
 
-        public OnvifObjects.GetProfileResponse.GetProfileResponseProfile GetProfile(string CameraIP, string Username, string Password, string ProfileToken)
+        public OnvifObjects.GetProfileResponse.GetProfileResponse GetProfile(string CameraIP, string Username, string Password, string ProfileToken)
         {
             string getprofiles_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
                                         "<GetProfile xmlns=\"http://www.onvif.org/ver10/media/wsdl\">" +
@@ -116,10 +116,10 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             {
                 cr = (OnvifObjects.GetProfileResponse.GetProfileResponse)serializer.Deserialize(stringReader);
             }
-            return cr.Profile;
+            return cr;
         }
     
-        public OnvifObjects.GetProfilesResponse.GetProfilesResponseProfiles[] GetProfiles(string CameraIP, string Username, string Password)
+        public OnvifObjects.GetProfilesResponse.GetProfilesResponse GetProfiles(string CameraIP, string Username, string Password)
         {
             string getprofiles_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">"+
                                         "<GetProfiles xmlns =\"http://www.onvif.org/ver10/media/wsdl\"/>"+
@@ -139,9 +139,35 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             {
                 cr = (OnvifObjects.GetProfilesResponse.GetProfilesResponse)serializer.Deserialize(stringReader);
             }
-            return cr.Profiles;
+            return cr;
         }
-    
-    
+
+        public OnvifObjects.GetMetadataConfigurationOptionsResponse.GetMetadataConfigurationOptionsResponse GetMetadataConfigurationOptions(string CameraIP, string Username, string Password, string ProfileToken,string ConfigurationToken)
+        {
+            string getmd_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetMetadataConfigurationOptions xmlns=\"http://www.onvif.org/ver10/media/wsdl\">" +
+                                        "<ConfigurationToken>" + ConfigurationToken + "</ConfigurationToken>" +
+                                        "<ProfileToken>" + ProfileToken + "</ProfileToken>" +
+                                    "</GetMetadataConfigurationOptions>" +
+                               "</s:Body>";//MediaProfile000
+            var res = NetFuncs.PostXmlRequest(CameraIP, getmd_xml, Username, Password, "GetMetadataConfigurationOptions");
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetMetadataConfigurationOptionsResponse.GetMetadataConfigurationOptionsResponse), new System.Xml.Serialization.XmlAttributeOverrides());
+            rnod.Normalize();
+            OnvifObjects.GetMetadataConfigurationOptionsResponse.GetMetadataConfigurationOptionsResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetMetadataConfigurationOptionsResponse.GetMetadataConfigurationOptionsResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
+
     }
 }
