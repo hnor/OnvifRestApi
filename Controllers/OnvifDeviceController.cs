@@ -142,6 +142,14 @@ namespace SgiOnvifRestApiGW.Controllers
             return sod1.GetUsers(CameraIp, UserName, Password);
         }
 
+        [SwaggerOperation(Summary = "دریافت لیست سرویس های دستگاه")]
+        [HttpGet("GetServices")]
+        public OnvifObjects.GetServicesResponse.GetServicesResponse GetServices(string CameraIp, string UserName, string Password,bool IncludeCapability)
+        {
+            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            return sod1.GetServices(CameraIp, UserName, Password, IncludeCapability);
+        }
+
 
 
 

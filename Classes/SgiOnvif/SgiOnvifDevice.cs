@@ -327,6 +327,31 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             return cr;
         }
 
+        public OnvifObjects.GetServicesResponse.GetServicesResponse GetServices(string CameraIP, string Username, string Password,bool IncludeCapability) 
+        {
+            string getusr_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetServices xmlns=\"http://www.onvif.org/ver10/device/wsdl\">" +
+                                        "<IncludeCapability>" + IncludeCapability + "</IncludeCapability>" +
+                                    "</GetServices>" +
+                                "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getusr_xml, Username, Password, "GetServices");
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetServicesResponse.GetServicesResponse));
+            rnod.Normalize();
+            OnvifObjects.GetServicesResponse.GetServicesResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetServicesResponse.GetServicesResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
 
 
 
