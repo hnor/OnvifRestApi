@@ -59,6 +59,15 @@ namespace SgiOnvifRestApiGW.Controllers
         }
 
 
+        [SwaggerOperation(Summary = "دریافت آدرس عکس برداری")]
+        [HttpGet("GetSnapshotUri")]
+        public OnvifObjects.GetSnapshotUriResponse.GetSnapshotUriResponse GetSnapshotUri(string CameraIp, string UserName, string Password,string ProfileToken)
+        {
+            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            return som1.GetSnapshotUri(CameraIp,UserName,Password, ProfileToken);
+        }
+
+
         [SwaggerOperation(Summary = "دریافت تنظیمات ویدئو")]
         [HttpGet("GetVideoSourceConfiguration")]
         public OnvifObjects.GetVideoSourceConfigurationResponse.GetVideoSourceConfigurationResponse GetVideoSourceConfiguration(string CameraIp, string UserName, string Password,string ConfigurationToken)

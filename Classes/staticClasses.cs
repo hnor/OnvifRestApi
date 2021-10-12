@@ -28,14 +28,14 @@ namespace SgiOnvifRestApiGW
         {
             return "<s:Envelope xmlns:s=\"http://www.w3.org/2003/05/soap-envelope\">" + EnvelopContent + "</s:Envelope>";
         }
-        private static string getServiceUri(string DeviceIp)
+        private static string getServiceUri(string DeviceIp,OnvifAddressing EndpointPath=OnvifAddressing.device_service)
         {
-            return "http://" + DeviceIp + "/onvif/device_service";
+            return "http://" + DeviceIp + "/onvif/" + EndpointPath.ToString();
         }
-        public static string PostXmlRequest(string CameraIp, string requestXml, string Username, string Password, string ActionName)
+        public static string PostXmlRequest(string CameraIp, string requestXml, string Username, string Password, string ActionName,OnvifAddressing EndpointPath = OnvifAddressing.device_service)
         {
             string responseStr = "";
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(getServiceUri(CameraIp));
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(getServiceUri(CameraIp, EndpointPath));
             byte[] bytes;
             bytes = System.Text.Encoding.ASCII.GetBytes(GetEnvelop(SecurityFuncs.getSecurityHeaderXml(Username, Password) + requestXml));
             request.ContentType = "application/soap+xml; charset=utf-8; action=\"http://www.onvif.org/ver10/device/wsdl/" + ActionName + "\"";
@@ -96,5 +96,12 @@ namespace SgiOnvifRestApiGW
         }
 
     }
-    
+
+    public enum OnvifAddressing 
+    {
+        event_service,
+        media_service,
+        device_service,
+    }
+
 }

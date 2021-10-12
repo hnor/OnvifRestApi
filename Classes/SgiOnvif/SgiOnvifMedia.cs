@@ -6,9 +6,10 @@ namespace SgiOnvifRestApiGW.SgiOnvif
 {
     public class SgiOnvifMedia
     {
+        private OnvifAddressing _rootAddr;
         public SgiOnvifMedia()
         {
-
+            this._rootAddr = OnvifAddressing.media_service;
         }
         public OnvifObjects.GetVideoEncoderConfigurationOptionsResponse.GetVideoEncoderConfigurationOptionsResponse GetVideoEncoderConfigurationOptions(string CameraIP, string Username,string Password,string ProfileToken,string ConfigurationToken) 
         {
@@ -18,7 +19,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
                                         "<ProfileToken>" + ProfileToken + "</ProfileToken>" +
                                     "</GetVideoEncoderConfigurationOptions>" +
                                    "</s:Body>";
-            var res = NetFuncs.PostXmlRequest(CameraIP, getstruri_xml, Username, Password, "GetVideoEncoderConfigurationOptions");
+            var res = NetFuncs.PostXmlRequest(CameraIP, getstruri_xml, Username, Password, "GetVideoEncoderConfigurationOptions",_rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
             if (xmlDoc.InnerText.Contains("s:Fault"))
@@ -57,6 +58,31 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
             {
                 cr = (OnvifObjects.GetVideoSourceConfigurationResponse.GetVideoSourceConfigurationResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
+        public OnvifObjects.GetSnapshotUriResponse.GetSnapshotUriResponse GetSnapshotUri(string CameraIP, string Username, string Password,string ProfileToken) 
+        {
+            string getstruri_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetSnapshotUri xmlns=\"http://www.onvif.org/ver10/media/wsdl\">" +
+                                        "<ProfileToken>" + ProfileToken + "</ProfileToken>" +
+                                    "</GetSnapshotUri>" +
+                                   "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getstruri_xml, Username, Password, "GetSnapshotUri");
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetSnapshotUriResponse.GetSnapshotUriResponse));
+            rnod.Normalize();
+            OnvifObjects.GetSnapshotUriResponse.GetSnapshotUriResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetSnapshotUriResponse.GetSnapshotUriResponse)serializer.Deserialize(stringReader);
             }
             return cr;
         }
@@ -102,7 +128,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
                                         "</GetProfile>" +
                                      "</s:Body>";//MediaProfile000
             OnvifObjects.GetProfileResponse.GetProfileResponse cr = null;
-            var res = NetFuncs.PostXmlRequest(CameraIP, getprofiles_xml, Username, Password, "wsdlGetProfile");
+            var res = NetFuncs.PostXmlRequest(CameraIP, getprofiles_xml, Username, Password, "wsdlGetProfile", _rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
             if (xmlDoc.InnerText.Contains("s:Fault"))
@@ -125,7 +151,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
                                         "<GetProfiles xmlns =\"http://www.onvif.org/ver10/media/wsdl\"/>"+
                                      "</s:Body>";
             OnvifObjects.GetProfilesResponse.GetProfilesResponse cr = null;
-            var res = NetFuncs.PostXmlRequest(CameraIP, getprofiles_xml, Username, Password, "GetProfiles");
+            var res = NetFuncs.PostXmlRequest(CameraIP, getprofiles_xml, Username, Password, "GetProfiles", _rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
             if (xmlDoc.InnerText.Contains("s:Fault"))
