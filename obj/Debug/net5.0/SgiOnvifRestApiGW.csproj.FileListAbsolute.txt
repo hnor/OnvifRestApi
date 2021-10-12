@@ -59,3 +59,4 @@ F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\ref\SgiOnvifRestApiGW.dll
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.pdb
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.genruntimeconfig.cache
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.csproj.AssemblyReference.cache

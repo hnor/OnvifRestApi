@@ -1,0 +1,13 @@
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\SgiOnvifRestApiGW.exe
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\appsettings.json
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\SgiOnvifRestApiGW.dll
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\SgiOnvifRestApiGW.deps.json
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\SgiOnvifRestApiGW.runtimeconfig.json
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\SgiOnvifRestApiGW.pdb
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\Microsoft.OpenApi.dll
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\Serilog.dll
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Annotations.dll
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

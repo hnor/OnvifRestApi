@@ -34,7 +34,6 @@ namespace SgiOnvifRestApiGW.Controllers
 
         [SwaggerOperation(Summary = "")]
         [HttpGet("GetImagingSettings")]
-        //public string GetImagingSettings(string CameraIp, string UserName, string Password, string VideoSourceToken)
         public OnvifObjects.GetImagingSettingsResponse.GetImagingSettingsResponse GetImagingSettings(string CameraIp, string UserName, string Password, string VideoSourceToken)
         {
             SgiOnvif.SgiOnvifImagingPort soip1 = new SgiOnvif.SgiOnvifImagingPort();
