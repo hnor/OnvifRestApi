@@ -220,5 +220,34 @@ namespace SgiOnvifRestApiGW.SgiOnvif
         }
 
 
+
+
+
+        public OnvifObjects.DeleteProfileResponse.EnvelopeBody DeleteProfile(string CameraIP, string Username, string Password, string ProfileToken)
+        {
+            string delprofiles_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                        "<DeleteProfile xmlns=\"http://www.onvif.org/ver10/media/wsdl\">" +
+                                            "<ProfileToken>" + ProfileToken + "</ProfileToken>" +
+                                        "</DeleteProfile>" +
+                                      "</s:Body>";//MediaProfile000
+            OnvifObjects.DeleteProfileResponse.EnvelopeBody cr = null;
+            var res = NetFuncs.PostXmlRequest(CameraIP, delprofiles_xml, Username, Password, "DeleteProfile", _rootAddr);
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.DeleteProfileResponse.EnvelopeBody), new System.Xml.Serialization.XmlAttributeOverrides());
+            rnod.Normalize();
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.DeleteProfileResponse.EnvelopeBody)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
+
     }
 }
