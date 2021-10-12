@@ -20,6 +20,17 @@ namespace SgiOnvifRestApiGW.Controllers
             _logger = logger;
 
         }
+
+
+        [SwaggerOperation(Summary = "دستگاه PTZ دریافت تنظیمات")]
+        [HttpGet("GetConfigurations")]
+        public OnvifObjects.OnvifPtzGetConfigurationsResponse.GetConfigurationsResponse GetConfigurations(String CameraIP, String Username, String Password)
+        {
+            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            return sop1.GetConfigurations(CameraIP, Username, Password);
+        }
+
+
         [SwaggerOperation(Summary = "حرکت دوربین به صورت مطلق")]
         [HttpPut("AbsuloteMove")]
         public void AbsuloteMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY,float Zoom)
@@ -27,6 +38,8 @@ namespace SgiOnvifRestApiGW.Controllers
             SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
             sop1.AbsoluteMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY, Zoom);
         }
+
+
         [SwaggerOperation(Summary = "حرکت دوربین به صورت نسبی")]
         [HttpPut("RelativeMove")]
         public void RelativeMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY)
@@ -34,6 +47,8 @@ namespace SgiOnvifRestApiGW.Controllers
             SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
             sop1.RelativeMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY);
         }
+
+
         [SwaggerOperation(Summary = "حرکت دوربین به صورت ادامه دار")]
         [HttpPut("ContinuousMove")]
         public void ContinuousMove(String CameraIP, String Username, String Password,String ProfileToken,float PanTiltX, float PanTiltY)
@@ -41,6 +56,8 @@ namespace SgiOnvifRestApiGW.Controllers
             SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
             sop1.ContinuousMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY);
         }
+
+
         [SwaggerOperation(Summary = "توقف حرکت دوربین")]
         [HttpPut("Stop")]
         public void Stop(String CameraIP, String Username, String Password,String ProfileToken)

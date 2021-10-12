@@ -77,6 +77,15 @@ namespace SgiOnvifRestApiGW.Controllers
         }
 
 
+        [SwaggerOperation(Summary = "دریافت تنظیمات صدا")]
+        [HttpGet("GetAudioSourceConfigurations")]
+        public OnvifObjects.GetAudioSourceConfigurationsResponse.GetAudioSourceConfigurationsResponse GetAudioSourceConfigurations(string CameraIp, string UserName, string Password,string ConfigurationToken)
+        {
+            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            return som1.GetAudioSourceConfigurations(CameraIp,UserName,Password, ConfigurationToken);
+        }
+
+
         [SwaggerOperation(Summary = "دریافت تنظیمات کدینگ ویدئو")]
         [HttpGet("GetVideoEncoderConfigurationOptions")]
         public OnvifObjects.GetVideoEncoderConfigurationOptionsResponse.GetVideoEncoderConfigurationOptionsResponse GetVideoEncoderConfigurationOptions(string CameraIp, string UserName, string Password, string ProfileToken, string ConfigurationToken)

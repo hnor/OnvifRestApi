@@ -62,6 +62,31 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             return cr;
         }
 
+        public OnvifObjects.GetAudioSourceConfigurationsResponse.GetAudioSourceConfigurationsResponse GetAudioSourceConfigurations(string CameraIP, string Username,string Password,string ConfigurationToken) 
+        {
+            string getaudc_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetAudioSourceConfigurations xmlns=\"http://www.onvif.org/ver10/media/wsdl\"/>" +
+                                 "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getaudc_xml, Username, Password, "wsdlGetAudioSourceConfigurations");
+            res=res.Replace("_", "");
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            string ooo=rnod.OuterXml.Replace("_", "");
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetAudioSourceConfigurationsResponse.GetAudioSourceConfigurationsResponse));
+            rnod.Normalize();
+            OnvifObjects.GetAudioSourceConfigurationsResponse.GetAudioSourceConfigurationsResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetAudioSourceConfigurationsResponse.GetAudioSourceConfigurationsResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
         public OnvifObjects.GetSnapshotUriResponse.GetSnapshotUriResponse GetSnapshotUri(string CameraIP, string Username, string Password,string ProfileToken) 
         {
             string getstruri_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +

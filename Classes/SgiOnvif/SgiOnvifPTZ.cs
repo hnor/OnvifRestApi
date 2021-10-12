@@ -6,9 +6,10 @@ namespace SgiOnvifRestApiGW.SgiOnvif
 {
     public class SgiOnvifPTZ
     {
+        private OnvifAddressing _rootAddr;
         public SgiOnvifPTZ()
         {
-
+            this._rootAddr = OnvifAddressing.ptz_service;
         }
         public void ContinuousMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY)
         {
@@ -20,7 +21,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
                                         "</Velocity>" +
                                     "</ContinuousMove>" +
                                   "</s:Body>";
-            var res = NetFuncs.PostXmlRequest(CameraIP, continue_xml, Username, Password, "ContinuousMove");
+            var res = NetFuncs.PostXmlRequest(CameraIP, continue_xml, Username, Password, "ContinuousMove",_rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
             if (xmlDoc.InnerText.Contains("s:Fault"))
@@ -65,10 +66,6 @@ namespace SgiOnvifRestApiGW.SgiOnvif
                 throw new Exception(xmlDoc.InnerText);
             }
         }
-
-
-
-
         public void Stop(String CameraIP, String Username, String Password, String ProfileToken) 
         {
             string stop_xml = "< s:Body xmlns:xsi =\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
@@ -86,5 +83,30 @@ namespace SgiOnvifRestApiGW.SgiOnvif
                 throw new Exception(xmlDoc.InnerText);
             }
         }
+
+        public OnvifObjects.OnvifPtzGetConfigurationsResponse.GetConfigurationsResponse GetConfigurations(String CameraIP, String Username, String Password)
+        {
+            string getcfg_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                     "<GetConfigurations xmlns=\"http://www.onvif.org/ver20/ptz/wsdl\"/>" +
+                                 "</s:Body>";
+            var res = NetFuncs.PostXmlRequest(CameraIP, getcfg_xml, Username, Password, "GetConfigurations",_rootAddr);
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.OnvifPtzGetConfigurationsResponse.GetConfigurationsResponse));
+            rnod.Normalize();
+            OnvifObjects.OnvifPtzGetConfigurationsResponse.GetConfigurationsResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.OnvifPtzGetConfigurationsResponse.GetConfigurationsResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
+
+
     }
 }

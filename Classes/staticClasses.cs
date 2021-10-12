@@ -102,6 +102,7 @@ namespace SgiOnvifRestApiGW
         event_service,
         media_service,
         device_service,
+        ptz_service
     }
 
 }
