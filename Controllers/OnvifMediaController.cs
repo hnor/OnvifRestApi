@@ -106,11 +106,10 @@ namespace SgiOnvifRestApiGW.Controllers
 
         [SwaggerOperation(Summary = "حذف یک پروفایل")]
         [HttpPut("DeleteProfile")]
-        public string DeleteProfile(string CameraIp, string UserName, string Password, string ProfileToken)
+        public bool DeleteProfile(string CameraIp, string UserName, string Password, string ProfileToken)
         {
             SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
-            var fff = som1.DeleteProfile(CameraIp, UserName, Password, ProfileToken);
-            return "";
+            return som1.DeleteProfile(CameraIp, UserName, Password, ProfileToken);
         }
 
 
