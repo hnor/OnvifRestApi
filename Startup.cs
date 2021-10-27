@@ -35,7 +35,7 @@ namespace SgiOnvifRestApiGW
                 c.EnableAnnotations();
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SgiOnvifRestApiGW", Version = "v1", });
                 c.CustomSchemaIds(sc => sc.FullName);
-                //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
         }
 
