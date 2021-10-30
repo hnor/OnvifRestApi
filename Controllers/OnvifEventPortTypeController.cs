@@ -14,9 +14,9 @@ namespace SgiOnvifRestApiGW.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class SgiOnvifEventPortTypeController : ControllerBase
+    public class OnvifEventPortTypeController : ControllerBase
     {
-        public SgiOnvifEventPortTypeController()
+        public OnvifEventPortTypeController()
         {
 
         }
