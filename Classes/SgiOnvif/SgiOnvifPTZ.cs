@@ -83,6 +83,60 @@ namespace SgiOnvifRestApiGW.SgiOnvif
                 throw new Exception(xmlDoc.InnerText);
             }
         }
+        public void SetHomePosition(String CameraIP, String Username, String Password, String ProfileToken) 
+        {
+            string sthm_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                "<SetHomePosition xmlns=\"http://www.onvif.org/ver20/ptz/wsdl\">" +
+                                    "<ProfileToken>" + ProfileToken + "</ProfileToken>" +
+                                "</SetHomePosition>" +
+                              "</s:Body>";//MediaProfile000
+            var res = NetFuncs.PostXmlRequest(CameraIP, sthm_xml, Username, Password, "SetHomePosition");
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.InnerText);
+            }
+        }
+        public void GotoHomePosition(String CameraIP, String Username, String Password, String ProfileToken) 
+        {
+            string gthm_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                "<GotoHomePosition xmlns=\"http://www.onvif.org/ver20/ptz/wsdl\">" +
+                                    "<ProfileToken>"+ProfileToken+"</ProfileToken>" +
+                                "</GotoHomePosition>" +
+                              "</s:Body>";//MediaProfile000
+            var res = NetFuncs.PostXmlRequest(CameraIP, gthm_xml, Username, Password, "GotoHomePosition");
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.InnerText);
+            }
+        }
+        public OnvifObjects.GetPresetsResponse.GetPresetsResponse GetPresets(String CameraIP, String Username, String Password, String ProfileToken)
+        {
+            string gtprst_xml = "<s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+                                    "<GetPresets xmlns=\"http://www.onvif.org/ver20/ptz/wsdl\">" +
+                                        "<ProfileToken>"+ProfileToken+"</ProfileToken>" +
+                                    "</GetPresets>" +
+                                "</s:Body>"; //MediaProfile000
+             var res = NetFuncs.PostXmlRequest(CameraIP, gtprst_xml, Username, Password, "GetPresets", _rootAddr);
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(res);
+            if (xmlDoc.InnerText.Contains("s:Fault"))
+            {
+                throw new Exception(xmlDoc.InnerText);
+            }
+            var rnod = xmlDoc.ChildNodes[1].FirstChild.NextSibling.FirstChild;
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(OnvifObjects.GetPresetsResponse.GetPresetsResponse));
+            rnod.Normalize();
+            OnvifObjects.GetPresetsResponse.GetPresetsResponse cr = null;
+            using (StringReader stringReader = new StringReader(rnod.OuterXml.Trim()))
+            {
+                cr = (OnvifObjects.GetPresetsResponse.GetPresetsResponse)serializer.Deserialize(stringReader);
+            }
+            return cr;
+        }
 
         public OnvifObjects.OnvifPtzGetConfigurationsResponse.GetConfigurationsResponse GetConfigurations(String CameraIP, String Username, String Password)
         {

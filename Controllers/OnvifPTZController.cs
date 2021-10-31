@@ -65,5 +65,32 @@ namespace SgiOnvifRestApiGW.Controllers
             SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
             sop1.Stop(CameraIP, Username, Password, ProfileToken);
         }
+
+
+        [SwaggerOperation(Summary = "تنظیم موقعیت خانه")]
+        [HttpPut("SetHomePosition")]
+        public void SetHomePosition(String CameraIP, String Username, String Password,String ProfileToken)
+        {
+            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            sop1.SetHomePosition(CameraIP, Username, Password, ProfileToken);
+        }
+
+
+        [SwaggerOperation(Summary = "رفتن به موقعیت خانه")]
+        [HttpPut("GotoHomePosition")]
+        public void GotoHomePosition(String CameraIP, String Username, String Password,String ProfileToken)
+        {
+            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            sop1.GotoHomePosition(CameraIP, Username, Password, ProfileToken);
+        }
+
+
+        [SwaggerOperation(Summary = "لیست موقعیت های ذخیره شده")]
+        [HttpGet("GetPresets")]
+        public OnvifObjects.GetPresetsResponse.GetPresetsResponse GetPresets(String CameraIP, String Username, String Password,String ProfileToken)
+        {
+            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            return sop1.GetPresets(CameraIP, Username, Password, ProfileToken);
+        }
     }
 }

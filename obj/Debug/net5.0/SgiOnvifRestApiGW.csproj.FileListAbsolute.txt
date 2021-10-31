@@ -54,7 +54,6 @@ F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\staticwebassets\Sg
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\staticwebassets\SgiOnvifRestApiGW.StaticWebAssets.xml
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\scopedcss\bundle\SgiOnvifRestApiGW.styles.css
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.RazorTargetAssemblyInfo.cache
-F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.csproj.CopyComplete
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.dll
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\ref\SgiOnvifRestApiGW.dll
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.pdb

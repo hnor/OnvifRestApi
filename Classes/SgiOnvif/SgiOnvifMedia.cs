@@ -201,7 +201,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
                                         "<ProfileToken>" + ProfileToken + "</ProfileToken>" +
                                     "</GetMetadataConfigurationOptions>" +
                                "</s:Body>";//MediaProfile000
-            var res = NetFuncs.PostXmlRequest(CameraIP, getmd_xml, Username, Password, "GetMetadataConfigurationOptions");
+            var res = NetFuncs.PostXmlRequest(CameraIP, getmd_xml, Username, Password, "GetMetadataConfigurationOptions", _rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
             if (xmlDoc.InnerText.Contains("s:Fault"))
