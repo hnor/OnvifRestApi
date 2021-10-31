@@ -33,28 +33,28 @@ namespace SgiOnvifRestApiGW.Controllers
 
         [SwaggerOperation(Summary = "حرکت دوربین به صورت مطلق")]
         [HttpPut("AbsuloteMove")]
-        public void AbsuloteMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY,float Zoom)
+        public void AbsuloteMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY,float Zoom, float PantiltXSpeed = (float)0.1, float PanTiltYSpeed = (float)0.1, float ZoomSpeed = (float)0.1)
         {
             SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
-            sop1.AbsoluteMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY, Zoom);
+            sop1.AbsoluteMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY, Zoom, PantiltXSpeed, PanTiltYSpeed, ZoomSpeed);
         }
 
 
         [SwaggerOperation(Summary = "حرکت دوربین به صورت نسبی")]
         [HttpPut("RelativeMove")]
-        public void RelativeMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY)
+        public void RelativeMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY, float SpeedX, float SpeedY)
         {
             SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
-            sop1.RelativeMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY);
+            sop1.RelativeMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY, SpeedX, SpeedY);
         }
 
 
         [SwaggerOperation(Summary = "حرکت دوربین به صورت ادامه دار")]
         [HttpPut("ContinuousMove")]
-        public void ContinuousMove(String CameraIP, String Username, String Password,String ProfileToken,float PanTiltX, float PanTiltY)
+        public void ContinuousMove(String CameraIP, String Username, String Password,String ProfileToken,float PanTiltX, float PanTiltY,float Zoom)
         {
             SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
-            sop1.ContinuousMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY);
+            sop1.ContinuousMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY, Zoom);
         }
 
 
@@ -85,6 +85,24 @@ namespace SgiOnvifRestApiGW.Controllers
         }
 
 
+        [SwaggerOperation(Summary = "رفتن به موقعیت ذخیره شده")]
+        [HttpPut("GotoPreset")]
+        public void GotoPreset(String CameraIP, String Username, String Password,String ProfileToken,int PresetToken)
+        {
+            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            sop1.GotoPreset(CameraIP, Username, Password, ProfileToken, PresetToken);
+        }
+
+
+        [SwaggerOperation(Summary = "حذف موقعیت ذخیره شده")]
+        [HttpPut("RemovePreset")]
+        public void RemovePreset(String CameraIP, String Username, String Password,String ProfileToken,int PresetToken)
+        {
+            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            sop1.RemovePreset(CameraIP, Username, Password, ProfileToken, PresetToken);
+        }
+
+
         [SwaggerOperation(Summary = "لیست موقعیت های ذخیره شده")]
         [HttpGet("GetPresets")]
         public OnvifObjects.GetPresetsResponse.GetPresetsResponse GetPresets(String CameraIP, String Username, String Password,String ProfileToken)
@@ -92,5 +110,16 @@ namespace SgiOnvifRestApiGW.Controllers
             SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
             return sop1.GetPresets(CameraIP, Username, Password, ProfileToken);
         }
+
+
+        [SwaggerOperation(Summary = "ذخیره یک موقعیت دوربین")]
+        [HttpPut("SetPreset")]
+        public OnvifObjects.SetPresetResponse.SetPresetResponse SetPreset(String CameraIP, String Username, String Password,String ProfileToken,string PresetName)
+        {
+            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            return sop1.SetPreset(CameraIP, Username, Password, ProfileToken, PresetName);
+        }
+
+
     }
 }

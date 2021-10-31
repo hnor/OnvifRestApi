@@ -22,7 +22,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getstruri_xml, Username, Password, "GetVideoEncoderConfigurationOptions",_rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -47,7 +47,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getstruri_xml, Username, Password, "GetVideoSourceConfiguration");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -71,7 +71,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             res=res.Replace("_", "");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -97,7 +97,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getstruri_xml, Username, Password, "GetSnapshotUri");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -130,7 +130,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getstruri_xml, Username, Password, "GetStreamUri");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -156,7 +156,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getprofiles_xml, Username, Password, "wsdlGetProfile", _rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -179,7 +179,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getprofiles_xml, Username, Password, "GetProfiles", _rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -204,7 +204,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getmd_xml, Username, Password, "GetMetadataConfigurationOptions", _rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -233,11 +233,11 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, delprofiles_xml, Username, Password, "DeleteProfile", _rootAddr);
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
-            if (xmlDoc.InnerText.Contains("DeleteProfileResponse")) return true;
+            if (res.Contains("DeleteProfileResponse")) return true;
             return false;
         }
 

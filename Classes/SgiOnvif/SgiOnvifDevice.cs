@@ -74,7 +74,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getinterfce_xml, Username, Password, "GetNetworkInterfaces");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -96,7 +96,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getntp_xml, Username, Password, "GetNTP");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -120,7 +120,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -144,7 +144,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -168,7 +168,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -192,7 +192,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -216,7 +216,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -240,7 +240,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -266,7 +266,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -289,7 +289,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getru_xml, Username, Password, "GetRelayOutputs");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -312,7 +312,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getusr_xml, Username, Password, "GetUsers");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }
@@ -337,7 +337,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getusr_xml, Username, Password, "GetServices");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.ChildNodes[1].FirstChild.FirstChild.InnerText);
             }

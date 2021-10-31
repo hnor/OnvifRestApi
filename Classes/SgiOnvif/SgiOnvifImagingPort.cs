@@ -21,7 +21,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getopt_xml, Username, Password, "GetOptions");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -46,7 +46,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getmvo_xml, Username, Password, "GetMoveOptions");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -71,7 +71,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getstruri_xml, Username, Password, "GetImagingSettings");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }

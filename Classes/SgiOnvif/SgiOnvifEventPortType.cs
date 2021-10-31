@@ -20,7 +20,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             var res = NetFuncs.PostXmlRequest(CameraIP, getevtp_xml, Username, Password, "GetEventProperties");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(res);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (res.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
@@ -83,7 +83,7 @@ namespace SgiOnvifRestApiGW.SgiOnvif
             }
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(responseStr1);
-            if (xmlDoc.InnerText.Contains("s:Fault"))
+            if (responseStr1.Contains("s:Fault"))
             {
                 throw new Exception(xmlDoc.InnerText);
             }
