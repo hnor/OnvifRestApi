@@ -44,6 +44,7 @@ F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\bin\Debug\net5.0\Swashbuckle.AspNet
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.csproj.AssemblyReference.cache
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.GeneratedMSBuildEditorConfig.editorconfig
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.AssemblyInfoInputs.cache
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.AssemblyInfo.cs
@@ -54,8 +55,8 @@ F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\staticwebassets\Sg
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\staticwebassets\SgiOnvifRestApiGW.StaticWebAssets.xml
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\scopedcss\bundle\SgiOnvifRestApiGW.styles.css
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.RazorTargetAssemblyInfo.cache
+F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.csproj.CopyComplete
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.dll
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\ref\SgiOnvifRestApiGW.dll
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.pdb
 F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.genruntimeconfig.cache
-F:\SGI\SgiOnvifRestFullGW\sgionvifrestfullgw\obj\Debug\net5.0\SgiOnvifRestApiGW.csproj.AssemblyReference.cache
