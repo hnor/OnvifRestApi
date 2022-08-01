@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SgiOnvifRestApiGW.OnvifObjects.GetNetworkDefaultGatewayResponse
+namespace OnvifRestApiGW.OnvifObjects.GetNetworkDefaultGatewayResponse
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.

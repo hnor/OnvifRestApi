@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SgiOnvifRestApiGW.Controllers
+namespace OnvifRestApiGW.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -26,7 +26,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetConfigurations")]
         public OnvifObjects.OnvifPtzGetConfigurationsResponse.GetConfigurationsResponse GetConfigurations(String CameraIP, String Username, String Password)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             return sop1.GetConfigurations(CameraIP, Username, Password);
         }
 
@@ -35,7 +35,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("AbsuloteMove")]
         public void AbsuloteMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY,float Zoom, float PantiltXSpeed = (float)0.1, float PanTiltYSpeed = (float)0.1, float ZoomSpeed = (float)0.1)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             sop1.AbsoluteMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY, Zoom, PantiltXSpeed, PanTiltYSpeed, ZoomSpeed);
         }
 
@@ -44,7 +44,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("RelativeMove")]
         public void RelativeMove(String CameraIP, String Username, String Password, String ProfileToken, float PanTiltX, float PanTiltY, float SpeedX, float SpeedY)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             sop1.RelativeMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY, SpeedX, SpeedY);
         }
 
@@ -53,7 +53,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("ContinuousMove")]
         public void ContinuousMove(String CameraIP, String Username, String Password,String ProfileToken,float PanTiltX, float PanTiltY,float Zoom)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             sop1.ContinuousMove(CameraIP, Username, Password, ProfileToken, PanTiltX, PanTiltY, Zoom);
         }
 
@@ -62,7 +62,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("Stop")]
         public void Stop(String CameraIP, String Username, String Password,String ProfileToken)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             sop1.Stop(CameraIP, Username, Password, ProfileToken);
         }
 
@@ -71,7 +71,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("SetHomePosition")]
         public void SetHomePosition(String CameraIP, String Username, String Password,String ProfileToken)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             sop1.SetHomePosition(CameraIP, Username, Password, ProfileToken);
         }
 
@@ -80,7 +80,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("GotoHomePosition")]
         public void GotoHomePosition(String CameraIP, String Username, String Password,String ProfileToken)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             sop1.GotoHomePosition(CameraIP, Username, Password, ProfileToken);
         }
 
@@ -89,7 +89,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("GotoPreset")]
         public void GotoPreset(String CameraIP, String Username, String Password,String ProfileToken,int PresetToken)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             sop1.GotoPreset(CameraIP, Username, Password, ProfileToken, PresetToken);
         }
 
@@ -98,7 +98,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("RemovePreset")]
         public void RemovePreset(String CameraIP, String Username, String Password,String ProfileToken,int PresetToken)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             sop1.RemovePreset(CameraIP, Username, Password, ProfileToken, PresetToken);
         }
 
@@ -107,7 +107,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetPresets")]
         public OnvifObjects.GetPresetsResponse.GetPresetsResponse GetPresets(String CameraIP, String Username, String Password,String ProfileToken)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             return sop1.GetPresets(CameraIP, Username, Password, ProfileToken);
         }
 
@@ -116,7 +116,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("SetPreset")]
         public OnvifObjects.SetPresetResponse.SetPresetResponse SetPreset(String CameraIP, String Username, String Password,String ProfileToken,string PresetName)
         {
-            SgiOnvif.SgiOnvifPTZ sop1 = new SgiOnvif.SgiOnvifPTZ();
+            Onvif.OnvifPTZ sop1 = new Onvif.OnvifPTZ();
             return sop1.SetPreset(CameraIP, Username, Password, ProfileToken, PresetName);
         }
 

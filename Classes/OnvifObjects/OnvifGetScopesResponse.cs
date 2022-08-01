@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SgiOnvifRestApiGW.OnvifObjects.GetScopesResponse
+namespace OnvifRestApiGW.OnvifObjects.GetScopesResponse
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.

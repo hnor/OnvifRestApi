@@ -7,7 +7,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace SgiOnvifRestApiGW
+namespace OnvifRestApiGW
 {
     public static class AppLogger
     {

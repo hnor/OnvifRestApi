@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hVXxTSt8wlEvOxcmBQiA6B4Dos5DQ1AQyY32HvDNnetuutaz1+Y6yUo3CAhkVuo4kVMnaDGDzrD9E1vLAm2uXw==",
+  "dgSpecHash": "Ka/F077jwYM+nBXZV/mFYkEEpN1rjSYosbuHlxDM3IAC5Z/4hkpYotDX68RPI8vz3esEc5LfD0gT++tTNSslDw==",
   "success": true,
-  "projectFilePath": "F:\\SGI\\SgiOnvifRestFullGW\\sgionvifrestfullgw\\SgiOnvifRestApiGW.csproj",
+  "projectFilePath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\OnvifRestApi\\OnvifRestApiGW.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

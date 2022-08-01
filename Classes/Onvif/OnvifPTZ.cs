@@ -2,12 +2,12 @@
 using System.IO;
 using System.Xml;
 
-namespace SgiOnvifRestApiGW.SgiOnvif
+namespace OnvifRestApiGW.Onvif
 {
-    public class SgiOnvifPTZ
+    public class OnvifPTZ
     {
         private OnvifAddressing _rootAddr;
-        public SgiOnvifPTZ()
+        public OnvifPTZ()
         {
             this._rootAddr = OnvifAddressing.ptz_service;
         }

@@ -3,11 +3,11 @@ using System.Net;
 using System.IO;
 using System.Xml;
 
-namespace SgiOnvifRestApiGW.SgiOnvif
+namespace OnvifRestApiGW.Onvif
 {
-    public class SgiOnvifEventPortType
+    public class OnvifEventPortType
     {
-        public SgiOnvifEventPortType()
+        public OnvifEventPortType()
         {
 
         }

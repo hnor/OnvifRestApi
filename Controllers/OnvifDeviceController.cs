@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SgiOnvifRestApiGW.Controllers
+namespace OnvifRestApiGW.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -25,7 +25,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetSystemDateAndTime")]
         public OnvifObjects.GetSystemDateAndTimeResponse.GetSystemDateAndTimeResponse GetSystemDateAndTime(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetDeviceDateTime(CameraIp, UserName, Password);
         }
 
@@ -33,7 +33,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetCapabilities")]
         public OnvifObjects.GetCapabilitiesResponse.GetCapabilitiesResponse GetCapabilities(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetCapabilities(CameraIp, UserName, Password);
         }
 
@@ -41,7 +41,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetNetworkInterfaces")]
         public OnvifObjects.OnvifGetNetworkInterfacesResponse.GetNetworkInterfacesResponse GetNetworkInterfaces(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetNetworkInterfaces(CameraIp, UserName, Password);
         }
 
@@ -49,7 +49,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetNTP")]
         public OnvifObjects.OnvifGetNTPResponse.GetNTPResponse GetNTP(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetNTP(CameraIp, UserName, Password);
         }
 
@@ -57,7 +57,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetZeroConfiguration")]
         public OnvifObjects.GetZeroConfigurationResponse.GetZeroConfigurationResponse GetZeroConfiguration(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetZeroConfiguration(CameraIp, UserName, Password);
         }
 
@@ -65,7 +65,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetHostname")]
         public OnvifObjects.OnvifGetHostnameResponse.GetHostnameResponse GetHostname(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetHostname(CameraIp, UserName, Password);
         }
 
@@ -73,7 +73,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetNetworkDefaultGateway")]
         public OnvifObjects.GetNetworkDefaultGatewayResponse.GetNetworkDefaultGatewayResponse GetNetworkDefaultGateway(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetNetworkDefaultGateway(CameraIp, UserName, Password);
         }
 
@@ -81,7 +81,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetDNS")]
         public OnvifObjects.GetDNSResponse.GetDNSResponse GetDNS(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetDNS(CameraIp, UserName, Password);
         }
 
@@ -89,7 +89,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetNetworkProtocols")]
         public OnvifObjects.GetNetworkProtocolsResponse.GetNetworkProtocolsResponse GetNetworkProtocols(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetNetworkProtocols(CameraIp, UserName, Password);
         }
 
@@ -97,7 +97,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetDiscoveryMode")]
         public OnvifObjects.GetDiscoveryModeResponse.GetDiscoveryModeResponse GetDiscoveryMode(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetDiscoveryMode(CameraIp, UserName, Password);
         }
 
@@ -105,7 +105,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetScopes")]
         public OnvifObjects.GetScopesResponse.GetScopesResponse GetScopes(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetScopes(CameraIp, UserName, Password);
         }
 
@@ -113,7 +113,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetSystemLog")]
         public OnvifObjects.GetSystemLogResponse.GetSystemLogResponse GetSystemLog(string CameraIp, string UserName, string Password,string LogType= "System")
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetSystemLog(CameraIp, UserName, Password, LogType);
         }
 
@@ -121,7 +121,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetRelayOutputs")]
         public OnvifObjects.GetRelayOutputsResponse.GetRelayOutputsResponse GetRelayOutputs(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetRelayOutputs(CameraIp, UserName, Password);
         }
 
@@ -129,7 +129,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetUsers")]
         public OnvifObjects.GetUsersResponse.GetUsersResponse GetUsers(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetUsers(CameraIp, UserName, Password);
         }
 
@@ -137,7 +137,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetServices")]
         public OnvifObjects.GetServicesResponse.GetServicesResponse GetServices(string CameraIp, string UserName, string Password,bool IncludeCapability)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             return sod1.GetServices(CameraIp, UserName, Password, IncludeCapability);
         }
 
@@ -145,7 +145,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("SetScopes")]
         public void SetScopes(string CameraIp, string UserName, string Password,string DeviceName, string LocationName)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             sod1.SetScopes(CameraIp, UserName, Password, DeviceName, LocationName);
         }
 
@@ -153,7 +153,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("SetNetworkInterfaces")]
         public void SetNetworkInterfaces(string CameraIp, string UserName, string Password,OnvifObjects.Inputs.OnvifSetNetworkInterfacesInputs NewConfig)
         {
-            SgiOnvif.SgiOnvifDevice sod1 = new SgiOnvif.SgiOnvifDevice();
+            Onvif.OnvifDevice sod1 = new Onvif.OnvifDevice();
             sod1.SetNetworkInterfaces(CameraIp, UserName, Password, NewConfig);
         }
 

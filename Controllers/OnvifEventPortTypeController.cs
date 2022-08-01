@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 
-namespace SgiOnvifRestApiGW.Controllers
+namespace OnvifRestApiGW.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -25,7 +25,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetEventProperties")]
         public OnvifObjects.GetEventPropertiesResponse.GetEventPropertiesResponse GetEventProperties(string CameraIP, string Username, string Password)
         {
-            SgiOnvif.SgiOnvifEventPortType soept = new SgiOnvif.SgiOnvifEventPortType();
+            Onvif.OnvifEventPortType soept = new Onvif.OnvifEventPortType();
             return soept.GetEventProperties(CameraIP, Username, Password);
         }
 
@@ -33,7 +33,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("Subscribe")]
         public OnvifObjects.SubscribeResponse.SubscribeResponse Subscribe()
         {
-            SgiOnvif.SgiOnvifEventPortType soept = new SgiOnvif.SgiOnvifEventPortType();
+            Onvif.OnvifEventPortType soept = new Onvif.OnvifEventPortType();
             return soept.DoSubscribe();
         }
 

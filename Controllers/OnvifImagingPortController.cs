@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SgiOnvifRestApiGW.Controllers
+namespace OnvifRestApiGW.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -20,7 +20,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetOptions")]
         public OnvifObjects.GetOptionsResponse.GetOptionsResponse GetProfile(string CameraIp, string UserName, string Password, string VideoSourceToken)
         {
-            SgiOnvif.SgiOnvifImagingPort soip1 = new SgiOnvif.SgiOnvifImagingPort();
+            Onvif.OnvifImagingPort soip1 = new Onvif.OnvifImagingPort();
             return soip1.GetOptions(CameraIp, UserName, Password, VideoSourceToken);
         }
 
@@ -28,7 +28,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetMoveOptions")]
         public OnvifObjects.GetMoveOptionsResponse.GetMoveOptionsResponse GetMoveOptions(string CameraIp, string UserName, string Password, string VideoSourceToken)
         {
-            SgiOnvif.SgiOnvifImagingPort soip1 = new SgiOnvif.SgiOnvifImagingPort();
+            Onvif.OnvifImagingPort soip1 = new Onvif.OnvifImagingPort();
             return soip1.GetMoveOptions(CameraIp, UserName, Password, VideoSourceToken);
         }
 
@@ -36,7 +36,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetImagingSettings")]
         public OnvifObjects.GetImagingSettingsResponse.GetImagingSettingsResponse GetImagingSettings(string CameraIp, string UserName, string Password, string VideoSourceToken)
         {
-            SgiOnvif.SgiOnvifImagingPort soip1 = new SgiOnvif.SgiOnvifImagingPort();
+            Onvif.OnvifImagingPort soip1 = new Onvif.OnvifImagingPort();
             return soip1.GetImagingSettings(CameraIp, UserName, Password, VideoSourceToken);
 //          return System.Text.Json.JsonSerializer.Serialize(res);
         }

@@ -9,7 +9,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace SgiOnvifRestApiGW.Controllers
+namespace OnvifRestApiGW.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -35,7 +35,7 @@ namespace SgiOnvifRestApiGW.Controllers
         /// <returns>list of profiles as json string</returns>
         public OnvifObjects.GetProfilesResponse.GetProfilesResponse GetProfiles(string CameraIp, string UserName, string Password)
         {
-            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            Onvif.OnvifMedia som1 = new Onvif.OnvifMedia();
             return som1.GetProfiles(CameraIp,UserName,Password);
             //return JsonSerializer.Serialize(res);
         }
@@ -44,7 +44,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetProfile")]
         public OnvifObjects.GetProfileResponse.GetProfileResponse GetProfile(string CameraIp, string UserName, string Password,string ProfileToken)
         {
-            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            Onvif.OnvifMedia som1 = new Onvif.OnvifMedia();
             return som1.GetProfile(CameraIp,UserName,Password,ProfileToken);
             //return JsonSerializer.Serialize(res);
         }
@@ -54,7 +54,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetStreamUri")]
         public OnvifObjects.OnvifGetStreamUriResponce.GetStreamUriResponse GetStreamUri(string CameraIp, string UserName, string Password,string ProfileToken)
         {
-            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            Onvif.OnvifMedia som1 = new Onvif.OnvifMedia();
             return som1.GetStreamUri(CameraIp,UserName,Password, ProfileToken);
         }
 
@@ -63,7 +63,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetSnapshotUri")]
         public OnvifObjects.GetSnapshotUriResponse.GetSnapshotUriResponse GetSnapshotUri(string CameraIp, string UserName, string Password,string ProfileToken)
         {
-            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            Onvif.OnvifMedia som1 = new Onvif.OnvifMedia();
             return som1.GetSnapshotUri(CameraIp,UserName,Password, ProfileToken);
         }
 
@@ -72,7 +72,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetVideoSourceConfiguration")]
         public OnvifObjects.GetVideoSourceConfigurationResponse.GetVideoSourceConfigurationResponse GetVideoSourceConfiguration(string CameraIp, string UserName, string Password,string ConfigurationToken)
         {
-            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            Onvif.OnvifMedia som1 = new Onvif.OnvifMedia();
             return som1.GetVideoSourceConfiguration(CameraIp,UserName,Password, ConfigurationToken);
         }
 
@@ -81,7 +81,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetAudioSourceConfigurations")]
         public OnvifObjects.GetAudioSourceConfigurationsResponse.GetAudioSourceConfigurationsResponse GetAudioSourceConfigurations(string CameraIp, string UserName, string Password,string ConfigurationToken)
         {
-            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            Onvif.OnvifMedia som1 = new Onvif.OnvifMedia();
             return som1.GetAudioSourceConfigurations(CameraIp,UserName,Password, ConfigurationToken);
         }
 
@@ -90,7 +90,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetVideoEncoderConfigurationOptions")]
         public OnvifObjects.GetVideoEncoderConfigurationOptionsResponse.GetVideoEncoderConfigurationOptionsResponse GetVideoEncoderConfigurationOptions(string CameraIp, string UserName, string Password, string ProfileToken, string ConfigurationToken)
         {
-            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            Onvif.OnvifMedia som1 = new Onvif.OnvifMedia();
             return som1.GetVideoEncoderConfigurationOptions(CameraIp, UserName, Password, ProfileToken, ConfigurationToken);
         }
 
@@ -99,7 +99,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpGet("GetMetadataConfigurationOptions")]
         public OnvifObjects.GetMetadataConfigurationOptionsResponse.GetMetadataConfigurationOptionsResponse GetMetadataConfigurationOptions(string CameraIp, string UserName, string Password, string ProfileToken, string ConfigurationToken)
         {
-            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            Onvif.OnvifMedia som1 = new Onvif.OnvifMedia();
             return som1.GetMetadataConfigurationOptions(CameraIp, UserName, Password, ProfileToken, ConfigurationToken);
         }
 
@@ -108,7 +108,7 @@ namespace SgiOnvifRestApiGW.Controllers
         [HttpPut("DeleteProfile")]
         public bool DeleteProfile(string CameraIp, string UserName, string Password, string ProfileToken)
         {
-            SgiOnvif.SgiOnvifMedia som1 = new SgiOnvif.SgiOnvifMedia();
+            Onvif.OnvifMedia som1 = new Onvif.OnvifMedia();
             return som1.DeleteProfile(CameraIp, UserName, Password, ProfileToken);
         }
 

@@ -2,12 +2,12 @@
 using System.IO;
 using System.Xml;
 
-namespace SgiOnvifRestApiGW.SgiOnvif
+namespace OnvifRestApiGW.Onvif
 {
-    public class SgiOnvifMedia
+    public class OnvifMedia
     {
         private OnvifAddressing _rootAddr;
-        public SgiOnvifMedia()
+        public OnvifMedia()
         {
             this._rootAddr = OnvifAddressing.media_service;
         }

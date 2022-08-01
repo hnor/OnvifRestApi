@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SgiOnvifRestApiGW
+namespace OnvifRestApiGW
 {
     public class Startup
     {
@@ -33,7 +33,7 @@ namespace SgiOnvifRestApiGW
             services.AddSwaggerGen(c =>
             {
                 c.EnableAnnotations();
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SgiOnvifRestApiGW", Version = "v1", });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "OnvifRestApiGW", Version = "v1", });
                 c.CustomSchemaIds(sc => sc.FullName);
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
@@ -46,7 +46,7 @@ namespace SgiOnvifRestApiGW
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SgiOnvifRestApiGW v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "OnvifRestApiGW v1"));
             }
 
             app.UseHttpsRedirection();

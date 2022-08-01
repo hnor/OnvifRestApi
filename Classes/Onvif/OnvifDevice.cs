@@ -2,11 +2,11 @@
 using System.IO;
 using System.Xml;
 
-namespace SgiOnvifRestApiGW.SgiOnvif
+namespace OnvifRestApiGW.Onvif
 {
-    public class SgiOnvifDevice
+    public class OnvifDevice
     {
-        public SgiOnvifDevice()
+        public OnvifDevice()
         {
 
         }
